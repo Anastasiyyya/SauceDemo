@@ -19,6 +19,4 @@ public class ProductsTest extends BaseTest{
         productsPage.addProductToCart(SAUCE_LABS_BACKPACK);
         Assert.assertTrue(productsPage.isRemoveButtonDisplayed(SAUCE_LABS_BACKPACK));
     }
-
-
 }

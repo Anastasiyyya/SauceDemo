@@ -29,7 +29,7 @@ public class BaseTest implements ITestConstants {
         cartPage = new CartPage(driver);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void endTest() {
         driver.quit();
     }
