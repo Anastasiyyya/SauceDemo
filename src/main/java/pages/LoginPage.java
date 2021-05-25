@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage{
 
@@ -9,26 +11,35 @@ public class LoginPage extends BasePage{
         super(driver);
     }
 
-    public static final By USERNAME_INPUT = By.xpath("//*[@data-test='username']");
-    public static final By PASSWORD_INPUT = By.xpath("//*[@data-test='password']");
-    public static final By LOGIN_BUTTON = By.xpath("//*[@id='login-button']");
-    private static final By ERROR_MESSAGE = By.xpath("//*[contains(@class,'error-message-container') " +
-            "and contains(@class,'error')]");
+    @FindBy(xpath = "//*[@data-test='username']")
+    WebElement usernameInput;
+
+    @FindBy(xpath = "//*[@data-test='password']")
+    WebElement passwordInput;
+
+    @FindBy(xpath = "//*[@id='login-button']")
+    WebElement loginButton;
+
+    @FindBy(xpath = "//*[@data-test='error']")
+    WebElement errorMessage;
+
     private static final String INCORRECT_DATA_IN_FIELDS_ERROR_TEXT  =
             "Epic sadface: Username and password do not match any user in this service";
 
 
-    public void login(String username, String password) {
-        driver.findElement(USERNAME_INPUT).sendKeys(username);
-        driver.findElement(PASSWORD_INPUT).sendKeys(password);
-        driver.findElement(LOGIN_BUTTON).click();
+    public ProductsPage login(String username, String password) {
+        usernameInput.sendKeys(username);
+        passwordInput.sendKeys(password);
+        loginButton.click();
+        return new ProductsPage(driver);
     }
 
-    public void openPage(String URL) {
-        driver.get(URL);
+    public LoginPage openPage() {
+        driver.get(LOGIN_PAGE_URL);
+        return this;
     }
 
     public String getErrorMessageText() {
-        return driver.findElement(ERROR_MESSAGE).getText();
+        return errorMessage.getText();
     }
 }
