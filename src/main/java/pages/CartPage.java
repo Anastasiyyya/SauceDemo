@@ -19,16 +19,18 @@ public class CartPage extends HeaderPage{
     private static final String REMOVE_BUTTON = PRODUCT_ITEM + "//button";
     private static final String CART_ITEM_CONTAINER = "//div[@class='cart_item']";
 
-    public void openPage(String url) {
-        driver.get(url);
+    public CartPage openPage() {
+        super.openPage(CART_PAGE_URL);
+        return this;
     }
 
     public String getProductPrice(String productName) {
         return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
     }
 
-    public void removeProductFromCart(String productName) {
+    public CartPage removeProductFromCart(String productName) {
         driver.findElement(By.xpath(String.format(REMOVE_BUTTON,productName))).click();
+        return this;
     }
 
     public boolean isProductDisplayed(String productName){
