@@ -4,7 +4,7 @@ import constants.IConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ProductsTest extends BaseTest implements IConstants,ITestConstants {
+public class ProductsTest extends BaseTest implements ITestConstants {
 
     @Test
     public void isAddToCartButtonDisplayedTest() {
