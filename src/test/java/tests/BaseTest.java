@@ -1,5 +1,6 @@
 package tests;
 
+import constants.IConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,11 +10,10 @@ import org.testng.annotations.BeforeMethod;
 import pages.CartPage;
 import pages.LoginPage;
 import pages.ProductsPage;
-import tests.ITestConstants;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest implements ITestConstants {
+public class BaseTest implements IConstants {
     WebDriver driver;
     LoginPage loginPage;
     ProductsPage productsPage;
@@ -25,6 +25,7 @@ public class BaseTest implements ITestConstants {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        initPages();
         PageFactory.initElements(driver,this);
     }
 

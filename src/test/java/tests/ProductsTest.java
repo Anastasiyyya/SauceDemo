@@ -1,9 +1,10 @@
 package tests;
 
+import constants.IConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ProductsTest extends BaseTest implements ITestConstants{
+public class ProductsTest extends BaseTest implements IConstants {
 
     @Test
     public void isAddToCartButtonDisplayedTest() {

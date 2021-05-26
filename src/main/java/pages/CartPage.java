@@ -28,8 +28,9 @@ public class CartPage extends HeaderPage{
         return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
     }
 
-    public void removeProductFromCart(String productName) {
+    public CartPage removeProductFromCart(String productName) {
         driver.findElement(By.xpath(String.format(REMOVE_BUTTON,productName))).click();
+        return this;
     }
 
     public boolean isProductDisplayed(String productName){

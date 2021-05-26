@@ -1,10 +1,11 @@
 package tests;
 
 import com.sun.xml.internal.bind.v2.TODO;
+import constants.IConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CartTest extends BaseTest implements ITestConstants {
+public class CartTest extends BaseTest implements IConstants {
 
     //TODO:To implement this scenario
     /*loginPage.openPage()
@@ -19,7 +20,7 @@ public class CartTest extends BaseTest implements ITestConstants {
     public void addProductToCartTest(){
         loginPage
                 .openPage()
-                .login("standard_user", "secret_sauce")
+                .login(USERNAME, PASSWORD)
                 .addProductToCart("Sauce Labs Bolt T-Shirt");
         cartPage.openPage();
         Assert.assertEquals(cartPage.getProductPrice("Sauce Labs Bolt T-Shirt"), "$15.99");
@@ -31,8 +32,9 @@ public class CartTest extends BaseTest implements ITestConstants {
                 .openPage()
                 .login(USERNAME, PASSWORD)
                 .addProductToCart(SAUCE_LABS_BACKPACK);
+        String productPrice = productsPage.getProductPrice(SAUCE_LABS_BACKPACK);
         cartPage.openPage();
-        Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BACKPACK),productsPage.getProductPrice(SAUCE_LABS_BACKPACK));
+        Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BACKPACK),productPrice);
     }
 
     @Test
