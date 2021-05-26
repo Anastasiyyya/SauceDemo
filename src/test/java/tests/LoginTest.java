@@ -4,17 +4,14 @@ import constants.IConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest implements IConstants {
-    private static final String EMPTY_FIELDS_ERROR_TEXT = "Epic sadface: Username is required";
-    private static final String EMPTY_PASSWORD_FIELD_ERROR_TEXT = "Epic sadface: Password is required";
-    private static final String INCORRECT_DATA_IN_FIELDS_ERROR_TEXT = "Epic sadface: Username and password do not match any user in this service";
+public class LoginTest extends BaseTest implements IConstants,ITestConstants {
 
    @Test
     public void loginWithEmptyFieldsTest() {
         loginPage
                 .openPage()
                 .waitForPageOpened()
-                .login("", "");
+                .login(EMPTY_LOGIN, EMPTY_PASSWORD);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELDS_ERROR_TEXT);
     }
 
@@ -23,7 +20,7 @@ public class LoginTest extends BaseTest implements IConstants {
         loginPage
                 .openPage()
                 .waitForPageOpened()
-                .login(EMPTY_STRING, PASSWORD);
+                .login(EMPTY_LOGIN, PASSWORD);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELDS_ERROR_TEXT);
     }
 

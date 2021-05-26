@@ -3,9 +3,12 @@ package tests;
 import com.sun.xml.internal.bind.v2.TODO;
 import constants.IConstants;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class CartTest extends BaseTest implements IConstants {
+public class CartTest extends BaseTest implements IConstants,ITestConstants {
 
     //TODO:To implement this scenario
     /*loginPage.openPage()
@@ -15,6 +18,25 @@ public class CartTest extends BaseTest implements IConstants {
     cartPage.getQuantity("Product Item")
     cartPage.getPrice("Product Item")
     Assertion*/
+
+    @DataProvider(name = "Входящие данные для Продуктов")
+    public Object[][] inputForITechTask() {
+        return new Object[][]{
+                {"Sauce Labs Bolt T-Shirt", "$15.99"},
+                {"Sauce Labs Backpack", "$29.99"}
+        };
+    }
+
+    @Parameters({"password"})
+    @Test(dataProvider = "Входящие данные для Продуктов")
+    public void addProductToCartTest(@Optional("1") String p1, String productName, String productPrice) {
+        loginPage
+                .openPage()
+                .login("standard_user", p1)
+                .addProductToCart(productName);
+        cartPage.openPage();
+        Assert.assertEquals(cartPage.getProductPrice(productName), productPrice);
+    }
 
     @Test
     public void addProductToCartTest(){
