@@ -33,7 +33,7 @@ public class TestListener implements ITestListener {
         takeScreenshot(iTestResult);
     }
 
-    @Attachment(value = "Last screen state", type = "image/png")
+    @Attachment(value = "Last screen state", type = "image/jpg")
     private byte[] takeScreenshot(ITestResult iTestResult) {
         ITestContext context = iTestResult.getTestContext();
         try {
