@@ -41,6 +41,12 @@ public class LoginTest extends BaseTest implements ITestConstants {
     }
 
     @Test
+    public void loginWithEmptyPasswordTest1() {
+        loginSteps.loginAndWaitForPageOpened(System.getenv("username"),System.getenv("password"));
+        Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_PASSWORD_FIELD_ERROR_TEXT);
+    }
+
+    @Test
     public void loginWithIncorrectDataTest() {
         loginSteps.loginAndWaitForPageOpened("v1","v1");
         Assert.assertEquals(loginPage.getErrorMessageText(), INCORRECT_DATA_IN_FIELDS_ERROR_TEXT);
