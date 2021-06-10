@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ public class CartPage extends HeaderPage{
     private static final String REMOVE_BUTTON = PRODUCT_ITEM + "//button";
     private static final String CART_ITEM_CONTAINER = "//div[@class='cart_item']";
 
+    @Step("Opening Cart Page")
     public CartPage openPage() {
         super.openPage(CART_PAGE_URL);
         return this;

@@ -1,7 +1,5 @@
 package tests;
 
-import com.sun.xml.internal.bind.v2.TODO;
-import constants.IConstants;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
@@ -19,7 +17,7 @@ public class CartTest extends BaseTest implements ITestConstants {
     cartPage.getPrice("Product Item")
     Assertion*/
 
-    @DataProvider(name = "Входящие данные для Продуктов")
+    @DataProvider(name = "ProductsAndPrices")
     public Object[][] inputForITechTask() {
         return new Object[][]{
                 {"Sauce Labs Bolt T-Shirt", "$15.99"},
@@ -27,58 +25,53 @@ public class CartTest extends BaseTest implements ITestConstants {
         };
     }
 
-    @Parameters({"password"})
-    @Test(dataProvider = "Входящие данные для Продуктов")
-    public void addProductToCartTest(@Optional("1") String p1, String productName, String productPrice) {
-        loginPage
-                .openPage()
-                .login("standard_user", p1)
-                .addProductToCart(productName);
+    @DataProvider(name = "Products")
+    public Object[] products() {
+        return new Object[]{
+                "Sauce Labs Backpack",
+                "Sauce Labs Bike Light",
+                "Sauce Labs Bolt T-Shirt",
+                "Sauce Labs Fleece Jacket",
+                "Sauce Labs Onesie",
+        };
+    }
+
+    @Test(dataProvider = "Products")
+    public void addProductToCartWithDataProviderTest(String product){
+        productSteps.loginAndAddProduct(USERNAME,PASSWORD,product);
         cartPage.openPage();
-        Assert.assertEquals(cartPage.getProductPrice(productName), productPrice);
+        Assert.assertTrue(cartPage.isProductDisplayed(product));
     }
 
     @Test
     public void addProductToCartTest(){
-        loginPage
-                .openPage()
-                .login(USERNAME, PASSWORD)
-                .addProductToCart("Sauce Labs Bolt T-Shirt");
+        productSteps.loginAndAddProduct(USERNAME,PASSWORD,SAUCE_LABS_BACKPACK);
         cartPage.openPage();
-        Assert.assertEquals(cartPage.getProductPrice("Sauce Labs Bolt T-Shirt"), "$15.99");
+        Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BACKPACK), "$19.99");
     }
 
-    @Test
-    public void checkProductPriceTest() {
-        loginPage
-                .openPage()
-                .login(USERNAME, PASSWORD)
-                .addProductToCart(SAUCE_LABS_BACKPACK);
-        String productPrice = productsPage.getProductPrice(SAUCE_LABS_BACKPACK);
+    @Test(dataProvider = "Products")
+    public void checkProductPriceTest(String product) {
+        productSteps.loginAndAddProduct(USERNAME,PASSWORD,product);
+        String productPrice = productsPage.getProductPrice(product);
         cartPage.openPage();
-        Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BACKPACK),productPrice);
+        Assert.assertEquals(cartPage.getProductPrice(product),productPrice);
     }
 
-    @Test
-    public void removeItemFromCartTest() {
-        loginPage
-                .openPage()
-                .login(USERNAME, PASSWORD)
-                .addProductToCart(SAUCE_LABS_BACKPACK);
+    @Test(dataProvider = "Products")
+    public void removeItemFromCartTest(String product) {
+        productSteps.loginAndAddProduct(USERNAME,PASSWORD,product);
         cartPage
                 .openPage()
-                .removeProductFromCart(SAUCE_LABS_BACKPACK);
-        Assert.assertFalse(cartPage.isProductDisplayed(SAUCE_LABS_BACKPACK));
+                .removeProductFromCart(product);
+        Assert.assertFalse(cartPage.isProductDisplayed(product));
     }
 
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void checkQuantityTest() {
-        loginPage
-                .openPage()
-                .login(USERNAME, PASSWORD)
-                .addProductToCart(SAUCE_LABS_BACKPACK)
-                .addProductToCart(SAUCE_LABS_FLEECE_JACKET);
+        productSteps.loginAndAddProduct(USERNAME,PASSWORD,SAUCE_LABS_BACKPACK);
+        productsPage.addProductToCart(SAUCE_LABS_FLEECE_JACKET);
         cartPage.openPage();
-        Assert.assertEquals(cartPage.getProductQuantity().toString(),"2");
+        Assert.assertEquals(cartPage.getProductQuantity().toString(),"3");
     }
 }
