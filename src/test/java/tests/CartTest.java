@@ -47,7 +47,7 @@ public class CartTest extends BaseTest implements ITestConstants {
     public void addProductToCartTest(){
         productSteps.loginAndAddProduct(USERNAME,PASSWORD,SAUCE_LABS_BACKPACK);
         cartPage.openPage();
-        Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BACKPACK), "$19.99");
+        Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BACKPACK), "$29.99");
     }
 
     @Test(dataProvider = "Products")
@@ -72,6 +72,6 @@ public class CartTest extends BaseTest implements ITestConstants {
         productSteps.loginAndAddProduct(USERNAME,PASSWORD,SAUCE_LABS_BACKPACK);
         productsPage.addProductToCart(SAUCE_LABS_FLEECE_JACKET);
         cartPage.openPage();
-        Assert.assertEquals(cartPage.getProductQuantity().toString(),"3");
+        Assert.assertEquals(cartPage.getProductQuantity().toString(),"2");
     }
 }
