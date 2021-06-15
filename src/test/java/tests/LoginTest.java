@@ -49,7 +49,7 @@ public class LoginTest extends BaseTest implements ITestConstants {
     }
 
     @Test
-    public void loginWithEmptyPasswordTest1() {
+    public void loginWithEmptyPasswordTest2() {
         loginSteps.loginAndWaitForPageOpened(System.getenv("username"),System.getenv("password"));
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_PASSWORD_FIELD_ERROR_TEXT);
     }
