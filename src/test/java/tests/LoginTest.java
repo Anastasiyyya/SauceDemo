@@ -3,6 +3,7 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 public class LoginTest extends BaseTest implements ITestConstants {
 
@@ -37,6 +38,13 @@ public class LoginTest extends BaseTest implements ITestConstants {
     @Test
     public void loginWithEmptyPasswordTest() {
         loginSteps.loginAndWaitForPageOpened(USERNAME,EMPTY_PASSWORD);
+        Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_PASSWORD_FIELD_ERROR_TEXT);
+    }
+
+    @Test
+    public void loginWithEmptyPasswordTest1() {
+        loginSteps.loginAndWaitForPageOpened(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")), System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_PASSWORD_FIELD_ERROR_TEXT);
     }
 
