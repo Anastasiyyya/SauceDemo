@@ -2,20 +2,9 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest implements ITestConstants {
-
-    //TODO:To implement this scenario
-    /*loginPage.openPage()
-    loginPage.login(username.password
-    productsPage.addToCart("Product Item")
-    cartPage.openPage()
-    cartPage.getQuantity("Product Item")
-    cartPage.getPrice("Product Item")
-    Assertion*/
 
     @DataProvider(name = "ProductsAndPrices")
     public Object[][] inputForITechTask() {
@@ -36,6 +25,10 @@ public class CartTest extends BaseTest implements ITestConstants {
         };
     }
 
+    /**
+     * This test checks if the product has been added to the cart( without using data provider)
+     * @param product
+     */
     @Test(dataProvider = "Products")
     public void addProductToCartWithDataProviderTest(String product){
         productSteps.loginAndAddProduct(USERNAME,PASSWORD,product);
@@ -43,6 +36,9 @@ public class CartTest extends BaseTest implements ITestConstants {
         Assert.assertTrue(cartPage.isProductDisplayed(product));
     }
 
+    /**
+     * This test checks if the product has been added to the cart
+     */
     @Test
     public void addProductToCartTest(){
         productSteps.loginAndAddProduct(USERNAME,PASSWORD,SAUCE_LABS_BACKPACK);
@@ -50,6 +46,10 @@ public class CartTest extends BaseTest implements ITestConstants {
         Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BACKPACK), "$29.99");
     }
 
+    /**
+     * This test checks prices of products in cart
+     * @param product
+     */
     @Test(dataProvider = "Products")
     public void checkProductPriceTest(String product) {
         productSteps.loginAndAddProduct(USERNAME,PASSWORD,product);
@@ -58,6 +58,10 @@ public class CartTest extends BaseTest implements ITestConstants {
         Assert.assertEquals(cartPage.getProductPrice(product),productPrice);
     }
 
+    /**
+     * This test checks if the product has been deleted from the cart
+     * @param product
+     */
     @Test(dataProvider = "Products")
     public void removeItemFromCartTest(String product) {
         productSteps.loginAndAddProduct(USERNAME,PASSWORD,product);
@@ -67,6 +71,9 @@ public class CartTest extends BaseTest implements ITestConstants {
         Assert.assertFalse(cartPage.isProductDisplayed(product));
     }
 
+    /**
+     * This test checks if the quantity of products is right
+     */
     @Test(retryAnalyzer = Retry.class)
     public void checkQuantityTest() {
         productSteps.loginAndAddProduct(USERNAME,PASSWORD,SAUCE_LABS_BACKPACK);

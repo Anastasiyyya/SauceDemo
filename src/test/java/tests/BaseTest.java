@@ -2,6 +2,7 @@ package tests;
 
 import constants.IConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -17,6 +18,7 @@ import steps.ProductSteps;
 
 import java.util.concurrent.TimeUnit;
 
+@Log4j2
 @Listeners(TestListener.class)
 public class BaseTest implements IConstants {
     WebDriver driver;
@@ -26,6 +28,10 @@ public class BaseTest implements IConstants {
     ProductSteps productSteps;
     LoginSteps loginSteps;
 
+    /**
+     * This method performed before the test methods
+     * @param context
+     */
     @BeforeMethod
     public void initTest(ITestContext context){
         WebDriverManager.chromedriver().setup();
@@ -36,15 +42,21 @@ public class BaseTest implements IConstants {
         PageFactory.initElements(driver,this);
         //Screenshots (if test failed you can see a screenshot in the report)
         String variable = "driver";
-        System.out.println("Setting driver into context with variable name " + variable);
+        log.debug("Setting driver into context with variable name " + variable);
         context.setAttribute(variable, driver);
     }
 
+    /**
+     * This method performed after the test methods
+     */
     @AfterMethod(alwaysRun = true)
     public void endTest() {
         driver.quit();
     }
 
+    /**
+     * This method inits pages
+     */
     public void initPages() {
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
