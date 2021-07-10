@@ -35,7 +35,6 @@ public class ProductsPage extends HeaderPage {
      * @return boolean
      */
     public boolean isAddToCartButtonDisplayed(String productName) {
-        log.info(String.format("The button 'add product to cart' for product '%s' is displayed",productName));
         return driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON,productName))).isDisplayed();
     }
 
@@ -45,7 +44,6 @@ public class ProductsPage extends HeaderPage {
      * @return boolean
      */
     public boolean isRemoveButtonDisplayed(String productName) {
-        log.info(String.format("The button 'remove button from cart' for product '%s' is displayed",productName));
         return driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON,productName))).isDisplayed();
     }
 

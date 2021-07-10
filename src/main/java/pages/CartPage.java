@@ -61,7 +61,6 @@ public class CartPage extends HeaderPage{
      * @return boolean
      */
     public boolean isProductDisplayed(String productName){
-        log.info(String.format("Is product %s displayed", productName));
         return !driver.findElements(By.xpath(String.format(PRODUCT_ITEM, productName))).isEmpty();
     }
 
@@ -71,7 +70,7 @@ public class CartPage extends HeaderPage{
      */
     public Integer getProductQuantity() {
         List<WebElement> webElementList = driver.findElements(By.xpath(CART_ITEM_CONTAINER));
-        log.info("Get quantity of products");
+        log.info(String.format("Get quantity of products: %s",webElementList.size()));
         return webElementList.size();
     }
 }

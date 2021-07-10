@@ -78,8 +78,9 @@ public class LoginPage extends BasePage{
      * @return
      */
     public String getErrorMessageText() {
-        log.info(String.format("Get an error message: %s.", errorMessage.getText()));
-        return errorMessage.getText();
+        String text = errorMessage.getText();
+        log.info(String.format("Get an error message: %s.", text));
+        return text;
     }
 
     /**
