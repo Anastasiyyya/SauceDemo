@@ -11,6 +11,12 @@ public class LoginSteps {
         loginPage = new LoginPage(driver);
     }
 
+    /**
+     * Login and wait for page loaded
+     * @param username
+     * @param password
+     * @return LoginSteps
+     */
     @Step("Login and wait for page loaded")
     public LoginSteps loginAndWaitForPageOpened(String username, String password) {
         loginPage
@@ -20,6 +26,13 @@ public class LoginSteps {
         return this;
     }
 
+    /**
+     * Login with error message
+     * @param username
+     * @param password
+     * @param errorTextMessage
+     * @return LoginSteps
+     */
     @Step("Login and wait for page loaded")
     public LoginSteps loginAndWaitForPageOpened(String username, String password, String errorTextMessage) {
         loginPage

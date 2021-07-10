@@ -14,6 +14,13 @@ public class ProductSteps {
         productsPage = new ProductsPage(driver);
     }
 
+    /**
+     * Login and add product to cart
+     * @param username
+     * @param password
+     * @param productName
+     * @return ProductSteps
+     */
     @Step("Login and add product to cart")
     public ProductSteps loginAndAddProduct(String username, String password, String productName) {
         loginPage
@@ -22,5 +29,4 @@ public class ProductSteps {
                 .addProductToCart(productName);
         return this;
     }
-
 }
