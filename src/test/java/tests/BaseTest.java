@@ -29,7 +29,7 @@ public class BaseTest implements IConstants {
     LoginSteps loginSteps;
 
     /**
-     * This method performed before the test methods
+     * This method performed before the test method
      * @param context
      */
     @BeforeMethod
