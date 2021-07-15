@@ -15,7 +15,6 @@ import pages.LoginPage;
 import pages.ProductsPage;
 import steps.LoginSteps;
 import steps.ProductSteps;
-
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
