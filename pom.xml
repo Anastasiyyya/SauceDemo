@@ -15,12 +15,11 @@
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <selenium-api.version>3.141.59</selenium-api.version>
         <selenium-java.version>3.141.59</selenium-java.version>
-        <testng.version>7.0.0</testng.version>
-        <testng.version>7.0.0</testng.version>
+        <testng.version>7.4.0</testng.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <aspectjweaver.version>1.9.6</aspectjweaver.version>
         <allure-maven.version>2.10.0</allure-maven.version>
-        <allure-testng.version>2.7.0</allure-testng.version>
+        <allure-testng.version>2.14.0</allure-testng.version>
         <aspectjweaver.version>1.9.6</aspectjweaver.version>
         <lombok.version>1.18.20</lombok.version>
         <log4j-core.version>2.14.1</log4j-core.version>
