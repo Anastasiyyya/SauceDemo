@@ -47,7 +47,7 @@ public class BaseTest implements IConstants {
     }
 
     /**
-     * This method performed after the test methods
+     * This method performed after the test method
      */
     @AfterMethod(alwaysRun = true)
     public void endTest() {
