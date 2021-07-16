@@ -1,6 +1,7 @@
 package tests;
 
 public interface ITestConstants {
+
     String EMPTY_FIELDS_ERROR_TEXT = "Epic sadface: Username is required";
     String EMPTY_PASSWORD_FIELD_ERROR_TEXT = "Epic sadface: Password is required";
     String INCORRECT_DATA_IN_FIELDS_ERROR_TEXT = "Epic sadface: Username and password do not match any user in this service";
