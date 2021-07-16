@@ -88,7 +88,7 @@ public class LoginPage extends BasePage{
      * @return LoginPage
      */
     public LoginPage waitForPageOpened() {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(botLogo));
         return this;
     }

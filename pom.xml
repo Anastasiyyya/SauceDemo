@@ -11,16 +11,13 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <selenium-chrome-driver.version>3.141.59</selenium-chrome-driver.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
-        <selenium-api.version>3.141.59</selenium-api.version>
         <selenium-java.version>3.141.59</selenium-java.version>
         <testng.version>7.4.0</testng.version>
         <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
         <aspectjweaver.version>1.9.6</aspectjweaver.version>
         <allure-maven.version>2.10.0</allure-maven.version>
         <allure-testng.version>2.14.0</allure-testng.version>
-        <aspectjweaver.version>1.9.6</aspectjweaver.version>
         <lombok.version>1.18.20</lombok.version>
         <log4j-core.version>2.14.1</log4j-core.version>
         <jackson-dataformat-yaml.version>2.12.3</jackson-dataformat-yaml.version>
@@ -34,7 +31,8 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar -Xmx256m
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar
+                        -Xmx256m
                     </argLine>
                 </configuration>
                 <dependencies>
@@ -101,6 +99,5 @@
             <artifactId>jackson-dataformat-yaml</artifactId>
             <version>${jackson-dataformat-yaml.version}</version>
         </dependency>
-
     </dependencies>
 </project>
