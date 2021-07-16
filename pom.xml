@@ -16,7 +16,7 @@
         <selenium-api.version>3.141.59</selenium-api.version>
         <selenium-java.version>3.141.59</selenium-java.version>
         <testng.version>7.4.0</testng.version>
-        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
         <aspectjweaver.version>1.9.6</aspectjweaver.version>
         <allure-maven.version>2.10.0</allure-maven.version>
         <allure-testng.version>2.14.0</allure-testng.version>
