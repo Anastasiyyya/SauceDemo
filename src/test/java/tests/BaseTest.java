@@ -26,7 +26,6 @@ public class BaseTest implements IConstants {
     CartPage cartPage;
     ProductSteps productSteps;
     LoginSteps loginSteps;
-
     /**
      * This method performed before the test method
      * @param context
