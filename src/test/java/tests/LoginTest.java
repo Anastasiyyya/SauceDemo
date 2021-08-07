@@ -61,16 +61,7 @@ public class LoginTest extends BaseTest implements ITestConstants {
      */
     @Test
     public void loginWithEmptyPasswordTest1() {
-        loginSteps.loginAndWaitForPageOpened(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")), System.getenv().getOrDefault("password", PropertyReader.getProperty("")));
-        Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_PASSWORD_FIELD_ERROR_TEXT);
-    }
-
-    /**
-     * This test checks if the error message has been displayed
-     */
-    @Test
-    public void loginWithEmptyPasswordTest2() {
-        loginSteps.loginAndWaitForPageOpened(System.getenv("username"),System.getenv("password"));
+        loginSteps.loginAndWaitForPageOpened(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")), System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_PASSWORD_FIELD_ERROR_TEXT);
     }
 
